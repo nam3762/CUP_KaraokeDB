@@ -64,10 +64,14 @@ table *{
 
 }
 
-.container{
+.blank{
     width: 100vw;
     height: 100vh;
-    
+
+    display: grid;
+}
+
+.container{
 
     display: grid;
     grid-template-rows: 1fr 9fr;
@@ -260,4 +264,7 @@ select{
 
 .charttable{
     width: 100%;
+
+    table-layout: fixed;
+    word-break: break-all;
 }
