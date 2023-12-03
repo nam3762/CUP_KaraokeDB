@@ -59,43 +59,43 @@
                 </div>
                 <div class="navbar" id="searchbox">
                     <i class="searchoff fas fa-xmark fa-2x"></i>
-                    <form class="searchform" action="method">
+                    <form class="searchform" action="url" accept-charset="utf-8" method="post">
                         <label for="song">Song</label>
                         <input type="text" name="song">
                         <label for="singer">Singer</label>
                         <input type="text" name="singer">
-                        <label for="pitch">Pitch range</label>
-                        <select name="lowOct" id="">
-                            <option value="1">1</option>
-                            <option value="2">2</option>
-                            <option value="3">3</option>
-                            <option value="3">4</option>
-                        </select>
-                        <select name="low" id="">
-                            <option value="1">Do</option>
-                            <option value="2">Re</option>
-                            <option value="3">Mi</option>
-                            <option value="3">Fa</option>
-                            <option value="3">Sol</option>
-                            <option value="3">Ra</option>
-                            <option value="3">Si</option>
-                        </select>
-                        <p>~</p>
-                        <select name="highOct" id="">
-                            <option value="1">1</option>
-                            <option value="2">2</option>
-                            <option value="3">3</option>
-                            <option value="3">4</option>
-                        </select>
-                        <select name="high" id="">
-                            <option value="1">Do</option>
-                            <option value="2">Re</option>
-                            <option value="3">Mi</option>
-                            <option value="3">Fa</option>
-                            <option value="3">Sol</option>
-                            <option value="3">Ra</option>
-                            <option value="3">Si</option>
-                        </select>
+                        <label for="pitch">Highest pitch range</label>
+                        <div class="selecthigh">
+                            <select name="lowOct" id="">
+                                <option value="2">2</option>
+                                <option value="3">3</option>
+                                <option value="3">4</option>
+                            </select>
+                            <select name="low" id="">
+                                <option value="1">Do</option>
+                                <option value="2">Re</option>
+                                <option value="3">Mi</option>
+                                <option value="3">Fa</option>
+                                <option value="3">Sol</option>
+                                <option value="3">Ra</option>
+                                <option value="3">Si</option>
+                            </select>
+                            <p>~</p>
+                            <select name="highOct" id="">
+                                <option value="2">2</option>
+                                <option value="3">3</option>
+                                <option value="3">4</option>
+                            </select>
+                            <select name="high" id="">
+                                <option value="1">Do</option>
+                                <option value="2">Re</option>
+                                <option value="3">Mi</option>
+                                <option value="3">Fa</option>
+                                <option value="3">Sol</option>
+                                <option value="3">Ra</option>
+                                <option value="3">Si</option>
+                            </select>
+                        </div>
                         <label for="pitch">Genre</label>
                         <div class="checkbox">
                             <input id="select1" class="genre" type="checkbox" name="genreCheck" value="R&B"><label for="select1">R&B</label>
@@ -109,33 +109,29 @@
                             <input id="select7" class="genre" type="checkbox" name="genreCheck" value="Fork"><label for="select7">Fork</label>
                             <input id="select8" class="genre" type="checkbox" name="genreCheck" value="Hiphop"><label for="select8">Hiphop</label>
                         </div>
-                        <button class="searchbtn">Search</button>
+                        <button class="searchbtn" type="button">Search</button>
                     </form>
                 </div>
                 <div class="chart">
                     <div></div>
                     <div class="chart_content">
                         <table class="charttable">
-                            <tr>
-                                <th>#</th>
-                                <th>Title</th>
-                                <th>Type</th>
-                                <th>Genre</th>
-                                <th>Highest</th>
-                                <th>Lowest</th>
-                                <th>Score</th>
-                                <th>Difficulty</th>
-                            </tr>
-                            <tr>
-                                <td>d</td>
-                                <td>d</td>
-                                <td>ad</td>
-                                <td>dasdfadfasfasdfafasfadfafdasdffd</td>
-                                <td>d</td>
-                                <td>d</td>
-                                <td>d</td>
-                                <td>d</td>
-                            </tr>
+                            <thead>
+                                <tr>
+                                    <th class="num">#</th>
+                                    <th class="tit">Title</th>
+                                    <th class="art">Artist</th>
+                                    <th class="type">Type</th>
+                                    <th class="gnr">Genre</th>
+                                    <th class="hi">Highest</th>
+                                    <th class="lo">Lowest</th>
+                                    <th class="score">Score</th>
+                                    <th class="dif">Difficulty</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <!--출력부분-->
+                            </tbody>
                         </table>
                     </div>
                     <div></div>

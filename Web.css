@@ -1,4 +1,6 @@
 html, body{
+    height: 100vh;
+
     margin: 0;
     padding: 0;
 
@@ -6,6 +8,16 @@ html, body{
     -moz-user-select:none;
     -ms-user-select:none;
     user-select:none;
+}
+
+div::-webkit-scrollbar{
+    display: none;
+    -ms-overflow-style: none; /* 인터넷 익스플로러 */
+    scrollbar-width: none; /* 파이어폭스 */
+}
+
+div{
+    overflow: auto;
 }
 
 input{
@@ -47,14 +59,14 @@ ul,li{
 a{
     text-decoration-line: none;
 
-    color: red;
+    color: black;
 }
 
 table{
     margin-left: auto;
     margin-right: auto;
 
-    font-size: 24px;
+    font-size: medium;
     margin-top: 10vh;
     border: 1px black solid;
     border-spacing: 12px;
@@ -72,7 +84,6 @@ table *{
 }
 
 .container{
-
     display: grid;
     grid-template-rows: 1fr 9fr;
 }
@@ -80,6 +91,7 @@ table *{
 .header{
     position: relative;
 
+    overflow: hidden;
     background-color: #ffc0cb;
 }
 
@@ -94,12 +106,15 @@ table *{
 
 .body{
     display: grid;
-    grid-template-columns: 2fr 5fr;
+    grid-template-columns: 2fr 7fr;
 
+    height: 100%;
+    overflow-x: hidden;
 }
 
 .navbar{
     background-color: whitesmoke;
+    overflow: hidden;
 }
 
 #karaoke_list{
@@ -109,9 +124,9 @@ table *{
 
 #karaoke_list .navbar_content{
     position: relative;
-    height: 100vh;
-    top: 50%;
-    transform: translate(0, -25%);
+    height: 90vh;
+    top: 50vh;
+    transform: translate(0, -30vh);
 
     text-align: center;
 }
@@ -123,9 +138,9 @@ table *{
 
 #searchbox form{
     position: relative;
-    height: 100vh;
+    height: 90vh;
     top: 50%;
-    transform: translate(0, -25%);
+    transform: translate(0, -30vh);
 
     text-align: center;
 }
@@ -199,8 +214,8 @@ i:hover{
     display: none;
 }
 
-div{
-    overflow: hidden;
+.year_list li a:hover{
+    color: red;
 }
 
 .searchform{
@@ -237,34 +252,85 @@ select{
     padding: 4px 8px;
     border-radius: 8px;
 }
+.selecthigh{
+    width: 100%;
+}
 
 .checkbox{
     display: grid;
     grid-template-columns: 1fr 1fr 1fr 1fr;
+
+    padding-left: 5%;
+    width: 90%;
+    text-align: center;
 }
 
 .checkbox label{ 
-    padding: 8px 0;
+    padding: 6px 0;
     text-align: center;
     font-size: 12px;
+}
+
+.chart{
+    display: grid;
+    grid-template-columns: 3fr 80fr 2fr;
+
+    text-align: center;
 }
 
 .chart_content{
     background-color: white;
 }
 
-.chart{
-    display: grid;
-    grid-template-columns: 1fr 20fr 1fr;
-
-    text-align: center;
-
-    overflow: scroll;
-}
-
 .charttable{
     width: 100%;
+    height: 100px;
+    border: 0;
+    border-collapse: collapse;
 
     table-layout: fixed;
     word-break: break-all;
+}
+
+.charttable td,.charttable th{
+    padding: 10px 0;
+    border-bottom: 1px solid black;
+}
+
+.charttable thead tr{
+    background-color: #ffc0cb;
+}
+.charttable tbody tr:nth-child(2n){
+    background-color: whitesmoke;
+}
+.charttable tbody tr:nth-child(2n-1){
+    background-color: white;
+}
+
+.num{
+    width: 5%;
+}
+.tit{
+    width: 20%;
+}
+.art{
+    width: 15%;
+}
+.type{
+    width: 5%;
+}
+.gnr{
+    width: 15%;
+}
+.hi{
+    width: 10%;
+}
+.lo{
+    width: 10%;
+}
+.score{
+    width: 10%;
+}
+.dif{
+    width: 10%;
 }
