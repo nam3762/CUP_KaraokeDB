@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="./Web.css" type="text/css">
+    <link rel="stylesheet" href="./Web.css?" type="text/css">
     <link
     rel="stylesheet"
     href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.8.2/css/all.min.css"
@@ -12,7 +12,9 @@
     rel="stylesheet"
     href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.css"
   />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.0/css/all.min.css" integrity="sha512-10/jx2EXwxxWqCLX/hHth/vu2KY3jCF70dCQB8TSgNjbCVAC/8vai53GfMDrO2Emgwccf2pJqxct9ehpzG+MTw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     <script  src="http://code.jquery.com/jquery-latest.min.js"></script>
+    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.min.js"></script>
     <script src="./Web.js"></script>
     <title>Document</title>
 </head>
@@ -54,7 +56,7 @@
                 <div></div>
             </div>
             <div class="navbar" id="searchbox">
-                <i class="searchoff fas fa-search fa-2x"></i>
+                <i class="searchoff fas fa-xmark fa-2x"></i>
                 <form class="searchform" action="method">
                     <label for="song">Song</label>
                     <input type="text" name="song">
@@ -105,27 +107,24 @@
                         <input id="select7" class="genre" type="checkbox" name="genreCheck" value="Fork"><label for="select7">Fork</label>
                         <input id="select8" class="genre" type="checkbox" name="genreCheck" value="Hiphop"><label for="select8">Hiphop</label>
                     </div>
+                    <button class="searchbtn">Search</button>
                 </form>
             </div>
             <div class="chart">
                 <div></div>
                 <div class="chart_content">
-                    <table>
-                        <!--
+                    <table class="charttable">
                         <tr>
-                            <th>Ranking</th>
-                            <th>Name</th>
+                            <th>#</th>
+                            <th>Title</th>
+                            <th>Type</th>
                             <th>Genre</th>
-                            <th>Artist</th>
                             <th>Highest</th>
-                            <th>Loswest</th>
+                            <th>Lowest</th>
+                            <th>Score</th>
+                            <th>Difficulty</th>
                         </tr>
-                        <tr>
-                            <td>Ranking</td>
-                            <td>Name</td>
-                            <td></td>
-                        </tr>
-                        -->
+                        
                     </table>
                 </div>
                 <div></div>

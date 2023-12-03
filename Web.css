@@ -29,7 +29,7 @@ input{
 }
 
 .genre + label:hover{
-    background-color: pink;
+    background-color: #ffc0cb;
 }
 
 .genre:checked+label{
@@ -76,13 +76,13 @@ table *{
 .header{
     position: relative;
 
-    background-color: black;
+    background-color: #ffc0cb;
 }
 
 #pageTitle{
     text-align: left;
 
-    color: white;
+    color: black;
     font-size: 56px;
     margin: 0;
     padding-left: 28px;
@@ -103,25 +103,52 @@ table *{
     grid-template-columns: 1fr 4fr 1fr;
 }
 
+#karaoke_list .navbar_content{
+    position: relative;
+    height: 100vh;
+    top: 50%;
+    transform: translate(0, -25%);
+
+    text-align: center;
+}
+
 #searchbox{
     display: none;
     grid-template-columns: 1fr 4fr 1fr;
 }
 
+#searchbox form{
+    position: relative;
+    height: 100vh;
+    top: 50%;
+    transform: translate(0, -25%);
 
-
-.navbar *{
     text-align: center;
 }
 
 .navbar_content{
     position: relative;
     display: inline;
-    height: 0;
     top: 100px;
 }
 
+.searchbtn{
+    cursor: pointer;
 
+    display: inline-block;
+    position: relative;
+    
+
+    width: 90%;
+
+    padding: 20px 0;
+
+    border: 0;
+    border-radius: 16px;
+
+    color: white;
+    background-color: black;
+}
 
 i{
     position: absolute;
@@ -133,7 +160,7 @@ i{
 }
 
 i:hover{
-    background-color: pink;
+    background-color: #ffc0cb;
     cursor: pointer;
 }
 
@@ -155,7 +182,7 @@ i:hover{
 
 .year_label:hover{
     cursor: pointer;
-    background-color: pink;
+    background-color: #ffc0cb;
 }
 
 .year_label *{
@@ -168,8 +195,12 @@ i:hover{
     display: none;
 }
 
+div{
+    overflow: hidden;
+}
+
 .searchform{
-    padding-top: 100px;
+    height: 100%;
 }
 
 .searchform label{
@@ -211,7 +242,7 @@ select{
 .checkbox label{ 
     padding: 8px 0;
     text-align: center;
-    font-size: 16px;
+    font-size: 12px;
 }
 
 .chart_content{
@@ -220,7 +251,13 @@ select{
 
 .chart{
     display: grid;
-    grid-template-columns: 1fr 7fr 1fr;
+    grid-template-columns: 1fr 20fr 1fr;
 
-    overflow-y: scroll;
+    text-align: center;
+
+    overflow: scroll;
+}
+
+.charttable{
+    width: 100%;
 }

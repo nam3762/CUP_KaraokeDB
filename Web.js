@@ -18,5 +18,16 @@ $(document).ready(function(){
         $('#searchbox').hide();
         $('#karaoke_list').show();
     })
+
+    $('.searchbtn').hover(function(){
+        console.log(5);
+        $(this).animate({
+            "backgroundColor":"#ffc0cb"
+        },100)
+    }, function(){
+        $(this).animate({
+            "backgroundColor":"black"
+        },100)
+    })
 });
 
