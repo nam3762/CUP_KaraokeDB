@@ -17,6 +17,13 @@
     <title>Document</title>
 </head>
 <body>
+    <?php
+    if (empty($_GET)) {
+        // 페이지 첫 방문시 2023년 차트로 303 See Other 응답 코드를 사용하여 리다이렉트합니다.
+        header('Location: http://localhost:8080/CUP/CUP_select.php?company=tj&year=2023', true, 303);
+        exit; // 중요: 리다이렉트 후에는 더 이상의 코드 실행을 막기 위해 exit를 호출합니다.
+        }
+    ?>
     <div class="containera">
     <div class="headera">
         <p id="pageTitle" onclick="window.location.href='CUP_select.php?company=tj&year=2023';" style="cursor:pointer;">CUP</p>
@@ -55,59 +62,66 @@
             </div>
             <div class="navbar" id="searchbox">
                 <i class="searchoff fas fa-search fa-2x"></i>
-                <form class="searchform" action="CUP_select.php" method="post">
+                <form class="searchform" action="CUP_select.php" method="get">
                     <label for="song">Song</label>
-                    <input type="text" name="song">
+                    <input type="text" name="song" value="<?php echo htmlspecialchars($_GET['song'] ?? '')?>">
                     <label for="artist">Artist</label>
-                    <input type="text" name="artist">
+                    <input type="text" name="artist" value="<?php echo htmlspecialchars($_GET['artist'] ?? '')?>">
                     <label for="pitch">Highest Pitch</label>
                     <select name="lowOct" id="">
-                        <option value="-">-</option>
-                        <option value="2">2</option>
-                        <option value="3">3</option>
-                        <option value="3">4</option>
+                        <option value="-" <?php echo (isset($_GET['lowOct']) && $_GET['lowOct'] == '-') ? 'selected' : ''; ?>>-</option>
+                        <option value="2" <?php echo (isset($_GET['lowOct']) && $_GET['lowOct'] == '2') ? 'selected' : ''; ?>>2</option>
+                        <option value="3" <?php echo (isset($_GET['lowOct']) && $_GET['lowOct'] == '3') ? 'selected' : ''; ?>>3</option>
+                        <option value="4" <?php echo (isset($_GET['lowOct']) && $_GET['lowOct'] == '4') ? 'selected' : ''; ?>>4</option>
                     </select>
                     <select name="low" id="">
-                        <option value="-">-</option>
-                        <option value="Do">Do</option>
-                        <option value="Re">Re</option>
-                        <option value="Mi">Mi</option>
-                        <option value="Fa">Fa</option>
-                        <option value="Sol">Sol</option>
-                        <option value="La">La</option>
-                        <option value="Si">Si</option>
+                        <option value="-" <?php echo (isset($_GET['low']) && $_GET['low'] == '-') ? 'selected' : ''; ?>>-</option>
+                        <option value="Do" <?php echo (isset($_GET['low']) && $_GET['low'] == 'Do') ? 'selected' : ''; ?>>Do</option>
+                        <option value="Re" <?php echo (isset($_GET['low']) && $_GET['low'] == 'Re') ? 'selected' : ''; ?>>Re</option>
+                        <option value="Mi" <?php echo (isset($_GET['low']) && $_GET['low'] == 'Mi') ? 'selected' : ''; ?>>Mi</option>
+                        <option value="Fa" <?php echo (isset($_GET['low']) && $_GET['low'] == 'Fa') ? 'selected' : ''; ?>>Fa</option>
+                        <option value="Sol" <?php echo (isset($_GET['low']) && $_GET['low'] == 'Sol') ? 'selected' : ''; ?>>Sol</option>
+                        <option value="La" <?php echo (isset($_GET['low']) && $_GET['low'] == 'La') ? 'selected' : ''; ?>>La</option>
+                        <option value="Si" <?php echo (isset($_GET['low']) && $_GET['low'] == 'Si') ? 'selected' : ''; ?>>Si</option>
                     </select>
                     <p>~</p>
                     <select name="highOct" id="">
-                        <option value="-">-</option>
-                        <option value="2">2</option>
-                        <option value="3">3</option>
-                        <option value="3">4</option>
+                        <option value="-" <?php echo (isset($_GET['highOct']) && $_GET['highOct'] == '-') ? 'selected' : ''; ?>>-</option>
+                        <option value="2" <?php echo (isset($_GET['highOct']) && $_GET['highOct'] == '2') ? 'selected' : ''; ?>>2</option>
+                        <option value="3" <?php echo (isset($_GET['highOct']) && $_GET['highOct'] == '3') ? 'selected' : ''; ?>>3</option>
+                        <option value="4" <?php echo (isset($_GET['highOct']) && $_GET['highOct'] == '4') ? 'selected' : ''; ?>>4</option>
                     </select>
                     <select name="high" id="">
-                        <option value="-">-</option>
-                        <option value="Do">Do</option>
-                        <option value="Re">Re</option>
-                        <option value="Mi">Mi</option>
-                        <option value="Fa">Fa</option>
-                        <option value="Sol">Sol</option>
-                        <option value="La">La</option>
-                        <option value="Si">Si</option>
+                        <option value="-" <?php echo (isset($_GET['high']) && $_GET['high'] == '-') ? 'selected' : ''; ?>>-</option>
+                        <option value="Do" <?php echo (isset($_GET['high']) && $_GET['high'] == 'Do') ? 'selected' : ''; ?>>Do</option>
+                        <option value="Re" <?php echo (isset($_GET['high']) && $_GET['high'] == 'Re') ? 'selected' : ''; ?>>Re</option>
+                        <option value="Mi" <?php echo (isset($_GET['high']) && $_GET['high'] == 'Mi') ? 'selected' : ''; ?>>Mi</option>
+                        <option value="Fa" <?php echo (isset($_GET['high']) && $_GET['high'] == 'Fa') ? 'selected' : ''; ?>>Fa</option>
+                        <option value="Sol" <?php echo (isset($_GET['high']) && $_GET['high'] == 'Sol') ? 'selected' : ''; ?>>Sol</option>
+                        <option value="La" <?php echo (isset($_GET['high']) && $_GET['high'] == 'La') ? 'selected' : ''; ?>>La</option>
+                        <option value="Si" <?php echo (isset($_GET['high']) && $_GET['high'] == 'Si') ? 'selected' : ''; ?>>Si</option>
+
                     </select>
                     <label for="Genre">Genre</label>
                     <div class="checkbox">
-                        <input id="select1" class="genre" type="checkbox" name="genreCheck[]" value="R&B"><label for="select1">R&B</label>
-                        <input id="select2" class="genre" type="checkbox" name="genreCheck[]" value="Dance"><label for="select2">Dance</label>
-                        <input id="select3" class="genre" type="checkbox" name="genreCheck[]" value="Rock"><label for="select3">Rock</label>
-                        <input id="select4" class="genre" type="checkbox" name="genreCheck[]" value="Balad"><label for="select4">Balad</label>
+                        <input id="select1" class="genre" type="checkbox" name="genreCheck[]" value="R&B"
+                            <?php echo (in_array('R&B', $_GET['genreCheck'] ?? []) ? 'checked' : '') ?>><label for="select1">R&B</label>
+                        <input id="select2" class="genre" type="checkbox" name="genreCheck[]" value="Dance"
+                            <?php echo (in_array('Dance', $_GET['genreCheck'] ?? []) ? 'checked' : '') ?>><label for="select2">Dance</label>
+                        <input id="select3" class="genre" type="checkbox" name="genreCheck[]" value="Rock"
+                            <?php echo (in_array('Rock', $_GET['genreCheck'] ?? []) ? 'checked' : '') ?>><label for="select3">Rock</label>
+                        <input id="select4" class="genre" type="checkbox" name="genreCheck[]" value="Balad"
+                            <?php echo (in_array('Balad', $_GET['genreCheck'] ?? []) ? 'checked' : '') ?>><label for="select4">Balad</label>
+                        <input id="select5" class="genre" type="checkbox" name="genreCheck[]" value="Indie"
+                            <?php echo (in_array('Indie', $_GET['genreCheck'] ?? []) ? 'checked' : '') ?>><label for="select5">Indie</label>
+                        <input id="select6" class="genre" type="checkbox" name="genreCheck[]" value="Trot"
+                            <?php echo (in_array('Trot', $_GET['genreCheck'] ?? []) ? 'checked' : '') ?>><label for="select6">Trot</label>
+                        <input id="select7" class="genre" type="checkbox" name="genreCheck[]" value="Fork"
+                            <?php echo (in_array('Fork', $_GET['genreCheck'] ?? []) ? 'checked' : '') ?>><label for="select7">Fork</label>
+                        <input id="select8" class="genre" type="checkbox" name="genreCheck[]" value="Hiphop"
+                            <?php echo (in_array('Hiphop', $_GET['genreCheck'] ?? []) ? 'checked' : '') ?>><label for="select8">Hiphop</label>
                     </div>
-                    <div class="checkbox">
-                        <input id="select5" class="genre" type="checkbox" name="genreCheck[]" value="Indie"><label for="select5">Indie</label>
-                        <input id="select6" class="genre" type="checkbox" name="genreCheck[]" value="Trot"><label for="select6">Trot</label>
-                        <input id="select7" class="genre" type="checkbox" name="genreCheck[]" value="Fork"><label for="select7">Fork</label>
-                        <input id="select8" class="genre" type="checkbox" name="genreCheck[]" value="Hiphop"><label for="select8">Hiphop</label>
-                    </div>
-                    <button type="submit" class="searchbtn">Search</button>
+                    <button type="submit" class="searchbtn" id="searchBtn">Search</button>
                 </form>
             </div>
             <div class="chart">
@@ -118,6 +132,30 @@
                     include_once 'CUP_dbconfig.php'; // DB 설정 파일
                     $dbname = "noraebang";
                     mysqli_select_db($conn, $dbname) or die('DB selection failed');
+
+                    $sortChart = isset($_GET['sortChart']) ? $_GET['sortChart'] : 'c.Ranking';
+                    $validChartSorts = array('c.Ranking', 's.Title', 'ar.Name');
+                    if (!in_array($sortChart, $validChartSorts)) {
+                        $sortChart = 'c.Ranking'; // 기본 정렬 기준
+                    }
+
+                    $sort = isset($_GET['sort']) ? $_GET['sort'] : 's.Song_ID';
+                    $validSorts = array('s.Song_ID', 's.Title', 'Artist', 's.type', 'Genre', 's.Lowest', 's.Highest', 'AvgScore', 'AvgDifficulty');
+                    if (!in_array($sort, $validSorts)) {
+                        $sort = 's.Song_ID'; // 기본 정렬 기준
+                    }
+                    // GET 매개변수에서 정렬 방향을 가져옵니다.
+                    $order = isset($_GET['order']) ? $_GET['order'] : 'ASC';
+                    $order2 = isset($_GET['order2']) ? $_GET['order2'] : 'ASC';
+
+                    // 정렬 방향을 전환합니다.
+                    $newOrder = ($order === 'ASC') ? 'DESC' : 'ASC';
+                    $newOrder2 = ($order2 === 'ASC') ? 'DESC' : 'ASC';
+
+                    // 현재 선택된 회사와 연도를 가져옵니다.
+                    $selectedCompany = isset($_GET['company']) ? $_GET['company'] : 'tj'; // 기본값으로 'tj'를 설정
+                    $selectedYear = isset($_GET['year']) ? $_GET['year'] : date('Y'); // 기본값으로 현재 연도를 설정
+                    
 
                 function ratingStars($avgScore, $maxRating) {
                     // Round the average score to the nearest whole number
@@ -177,7 +215,6 @@
                     return "Unknown";
                 }
 
-                
                 ///////////////////////////////////////////// 년도별 차트 part ////////////////////////////////////////////
 
                 // GET 요청으로부터 년도별 차트 조회
@@ -202,7 +239,7 @@
                                 GROUP BY 
                                     s.Song_ID, c.Ranking, s.Title, c.Year
                                 ORDER BY 
-                                    c.Ranking ASC;";
+                                    {$sortChart} {$order};";
 
                     // 쿼리 실행
                     $chartResult = $conn->query($chartQuery);
@@ -212,9 +249,9 @@
                     if ($chartResult->num_rows > 0) {
                         echo "<table class='charttable'>";
                         echo "<tr>
-                                <th>Ranking</th>
-                                <th>Title</th>
-                                <th>Artist</th>
+                                <th><a href='CUP_select.php?company=$selectedCompany&year=$selectedYear&sortChart=c.Ranking&order=$newOrder'>Ranking</a></th>
+                                <th><a href='CUP_select.php?company=$selectedCompany&year=$selectedYear&sortChart=s.Title&order=$newOrder'>Title</a></th>
+                                <th><a href='CUP_select.php?company=$selectedCompany&year=$selectedYear&sortChart=ar.Name&order=$newOrder'>Artist</a></th>
                                 <th>Year</th>
                             </tr>";
                         while ($row = $chartResult->fetch_assoc()) {
@@ -231,15 +268,15 @@
                     }
                 }
 
-                if ($_SERVER["REQUEST_METHOD"] == "POST") {
+                if ($_SERVER["REQUEST_METHOD"] == "GET" && isset($_GET['song']) && isset($_GET['artist'])) {
 
                     ///////////////////////////////////////////// 검색 part ////////////////////////////////////////////
                     // 사용자 입력을 안전하게 처리
-                    $songInput = mysqli_real_escape_string($conn, $_POST['song']);
-                    $artistInput = mysqli_real_escape_string($conn, $_POST['artist']);
+                    $songInput = isset($_GET['song']) ? mysqli_real_escape_string($conn, $_GET['song']) : '';
+                    $artistInput = isset($_GET['artist']) ? mysqli_real_escape_string($conn, $_GET['artist']) : '';
 
                     // 사용자가 선택한 장르가 있는지 확인합니다.
-                    $genreSelections = isset($_POST['genreCheck']) ? $_POST['genreCheck'] : [];
+                    $genreSelections = isset($_GET['genreCheck']) ? $_GET['genreCheck'] : [];
                     $genreIds = [];
 
                     // 선택된 장르 이름을 숫자로 변환합니다.
@@ -259,10 +296,11 @@
                     );
 
                     // 사용자가 옥타브와 음계를 선택하지 않았을 경우를 위한 기본값 설정 ('-')
-                    $lowOct = isset($_POST['lowOct']) && $_POST['lowOct'] !== '-' ? (int)$_POST['lowOct'] : null;
-                    $highOct = isset($_POST['highOct']) && $_POST['highOct'] !== '-' ? (int)$_POST['highOct'] : null;
-                    $lowNote = isset($_POST['low']) && $_POST['low'] !== '-' ? $_POST['low'] : null;
-                    $highNote = isset($_POST['high']) && $_POST['high'] !== '-' ? $_POST['high'] : null;
+                    $lowOct = isset($_GET['lowOct']) && $_GET['lowOct'] !== '-' ? (int)$_GET['lowOct'] : null;
+                    $highOct = isset($_GET['highOct']) && $_GET['highOct'] !== '-' ? (int)$_GET['highOct'] : null;
+                    $lowNote = isset($_GET['low']) && $_GET['low'] !== '-' ? $_GET['low'] : null;
+                    $highNote = isset($_GET['high']) && $_GET['high'] !== '-' ? $_GET['high'] : null;
+
                     // low와 high pitch를 숫자로 변환합니다. 여기서 옥타브 수는 12개의 반음마다 1씩 증가합니다.
                     // $lowPitchNumber = (($lowOct - 2) * 12) + $pitches[$lowNote];
                     // $highPitchNumber = (($highOct - 2) * 12) + $pitches[$highNote];
@@ -279,14 +317,21 @@
                         if (ctype_digit($songInput)) {
                             // 사용자 입력이 숫자일 경우, Song_ID로 검색합니다.
                             $whereConditions[] = "s.Song_ID = $songInput";
-                        } else {
+                        } else { 
                             // 사용자 입력이 숫자가 아닐 경우, 제목으로 검색합니다.
                             $whereConditions[] = "s.Title LIKE '%" . $songInput . "%'";
                         }
                     }
 
                     if (!empty($artistInput)) {
-                        $whereConditions[] = "a.Name LIKE '%" . $artistInput . "%'";
+                        // 모든 관련 가수가 포함된 노래를 반환하는 하위 쿼리를 생성합니다.
+                        $subQuery = "SELECT si.Song_ID
+                                    FROM sings si
+                                    INNER JOIN artist a ON si.Artist_Name = a.Name
+                                    WHERE a.Name LIKE '%" . $artistInput . "%'";
+                        
+                        // 하위 쿼리 결과에 있는 노래 ID를 사용하여 메인 쿼리를 필터링합니다.
+                        $whereConditions[] = "s.Song_ID IN ($subQuery)";
                     }
 
                     // 음, 옥타브 where 절
@@ -300,9 +345,14 @@
                     // 사용자가 하나 이상의 장르를 선택했을 경우에만 WHERE 절에 장르 조건을 추가합니다.
                     if (!empty($genreIds)) {
                         $whereConditions[] = "b.Genre_ID IN (" . implode(', ', $genreIds) . ")";
+                        $genreIdsString = implode(',', $genreIds);
+                        // The HAVING clause will check that at least one of the selected genres is associated with the song
+                        // This is used in conjunction with GROUP BY to ensure at least one genre of the song matches the selection
+                        $havingClause = "HAVING SUM(b.Genre_ID IN ($genreIdsString)) > 0";
                     } else {
                         // 장르를 선택하지 않았을 경우, 모든 장르를 포함하는 조건을 설정합니다.
                         $genreIdsString = null;
+                        $havingClause = null;
                     }
 
                     // 조건이 하나도 없는 경우를 방지합니다.
@@ -334,31 +384,48 @@
                             WHERE
                                 $whereClause
                             GROUP BY
-                                s.Song_ID";
-
-
-                    if (!empty($genreIds)) {
-                        $genreIdsString = implode(',', $genreIds);
-                        // 사용자가 선택한 장르 중 하나라도 일치하는 노래를 가져오기 위한 HAVING 절을 추가합니다.
-                        $sQuery .= " HAVING SUM(b.Genre_ID IN ($genreIdsString)) > 0";
-                    }
+                                s.Song_ID
+                            {$havingClause}
+                            ORDER BY
+                                {$sort} {$order2};
+                                ";
 
                     $sResult = $conn->query($sQuery);
+
+                    $baseParams = [
+                            'song' => $songInput,
+                            'artist' => $artistInput,
+                            'lowOct' => $lowOct,
+                            'low' => $lowNote,
+                            'highOct' => $highOct,
+                            'high' => $highNote,
+                            // 'sort'와 'order'는 각 링크에 따라 변경될 것입니다.
+                        ];
+
+                        $baseQueryString = http_build_query($baseParams);
+
+                        // 'genreCheck' 배열이 있으면 각 값에 대한 쿼리 파라미터를 추가합니다.
+                        if (!empty($_GET['genreCheck'])) {
+                            foreach ($_GET['genreCheck'] as $genre) {
+                            $baseQueryString .= '&genreCheck[]=' . urlencode($genre);
+                            }
+                        }
 
                     // 입력받은거 출력
                     if ($sResult->num_rows > 0) {
                         echo "<table class='charttable'>";
                         echo "<tr>
-                                <th>#</th>
-                                <th>Title</th>
-                                <th>Artist</th>
-                                <th>Type</th>
-                                <th>Genre</th>
-                                <th>Lowest</th>
-                                <th>Highest</th>
-                                <th>Score</th>
-                                <th>Difficulty</th>
+                                <th><a href='CUP_select.php?" . $baseQueryString . "&sort=s.Song_ID&order2=" . $newOrder2 . "'>#</a></th>
+                                <th><a href='CUP_select.php?" . $baseQueryString . "&sort=s.Title&order2=" . $newOrder2 . "'>Title</a></th>
+                                <th><a href='CUP_select.php?" . $baseQueryString . "&sort=Artist&order2=" . $newOrder2 . "'>Artist</a></th>
+                                <th><a href='CUP_select.php?" . $baseQueryString . "&sort=s.type&order2=" . $newOrder2 . "'>Type</a></th>
+                                <th><a href='CUP_select.php?" . $baseQueryString . "&sort=Genre&order2=" . $newOrder2 . "'>Genre</a></th>
+                                <th><a href='CUP_select.php?" . $baseQueryString . "&sort=s.Lowest&order2=" . $newOrder2 . "'>Lowest</a></th>
+                                <th><a href='CUP_select.php?" . $baseQueryString . "&sort=s.Highest&order2=" . $newOrder2 . "'>Highest</a></th>
+                                <th><a href='CUP_select.php?" . $baseQueryString . "&sort=AvgScore&order2=" . $newOrder2 . "'>Score</a></th>
+                                <th><a href='CUP_select.php?" . $baseQueryString . "&sort=AvgDifficulty&order2=" . $newOrder2 . "'>Difficulty</a></th>
                             </tr>";
+                            
                         while ($row = $sResult->fetch_assoc()) {
                             $score = isset($row['Score']) && is_numeric($row['Score']) ? $row['Score'] : 0;
                             $difficulty = isset($row['Difficulty']) && is_numeric($row['Difficulty']) ? $row['Difficulty'] : 0;

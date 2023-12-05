@@ -5,9 +5,6 @@ $(document).ready(function () {
   });
 
   $(".search").click(function (e) {
-    let height = $(".navbar").outerHeight();
-    let width = $(".navbar").outerWidth();
-
     $("#karaoke_list").hide();
     $("#searchbox").show();
   });
