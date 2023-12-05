@@ -12,9 +12,9 @@
     rel="stylesheet"
     href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.css"
   />
-    <script  src="http://code.jquery.com/jquery-latest.min.js"></script>
-    <script src="./Web.js"></script>
+    <script src="http://code.jquery.com/jquery-latest.min.js"></script>
     <title>Document</title>
+    <script src="./Web.js"></script>
 </head>
 <body>
     <?php
@@ -121,6 +121,8 @@
                         <input id="select8" class="genre" type="checkbox" name="genreCheck[]" value="Hiphop"
                             <?php echo (in_array('Hiphop', $_GET['genreCheck'] ?? []) ? 'checked' : '') ?>><label for="select8">Hiphop</label>
                     </div>
+                    <!-- 숨겨진 입력 필드를 추가합니다. -->
+                    <input type="hidden" name="search" value="active">
                     <button type="submit" class="searchbtn" id="searchBtn">Search</button>
                 </form>
             </div>
@@ -399,6 +401,7 @@
                             'low' => $lowNote,
                             'highOct' => $highOct,
                             'high' => $highNote,
+                            'search' => 'active'
                             // 'sort'와 'order'는 각 링크에 따라 변경될 것입니다.
                         ];
 
