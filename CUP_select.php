@@ -448,7 +448,7 @@
                         }
                         echo "</table>";
                     } else {
-                        echo "No results found";
+                        echo "No result found";
                     }
                     $conn->close();
                 }
