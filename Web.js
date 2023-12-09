@@ -22,25 +22,48 @@ $(document).ready(function () {
     hideSearchBox();
   });
 
-  $(".chart_content").scroll(function(){
+  $(".chart_content").scroll(function () {
     console.log(5);
   });
 
-  $(".top").click(function(){
-    $(".chart_content").animate({scrollTop: 0}, 500);
+  $(".top").click(function () {
+    $(".chart_content").animate({ scrollTop: 0 }, 500);
   });
 
-  $(".modalbg").click(function(){
-    $(this).css("display","none");
-    $(".modalcontents").css("display","none");
-  })
+  $(".modalbg").click(function () {
+    $(this).css("display", "none");
+    $(".modalcontents").css("display", "none");
+  });
 
-  $(".charttable").children('tbody').children('tr').click(function(){
-    $('.modalbg').css("display","block");
-    $('.modalcontents').css("display","grid");
-    var height = $('.modalinfo').children().innerHeight();
-    $('.modalinfo').children().animate({scrollTop: height},0);
-    $('.modalinfo').children().css("overflow","hidden");
+  // $(".charttable")
+  //   .children("tbody")
+  //   .children("tr")
+  //   .click(function () {
+  //     $(".modalbg").css("display", "block");
+  //     $(".modalcontents").css("display", "grid");
+  //     var height = $(".modalinfo").children().innerHeight();
+  //     $(".modalinfo").children().animate({ scrollTop: height }, 0);
+  //     $(".modalinfo").children().css("overflow", "hidden");
+  //   });
+
+  $(".charttable tbody tr").click(function () {
+    var songId = $(this).find("td:first-child").text(); // Song_ID 추출
+    $.ajax({
+      url: "Info.php", // PHP 스크립트
+      type: "GET",
+      dataType: "html",
+      data: { songId: songId },
+      success: function (response) {
+        // PHP 스크립트에서 반환된 데이터로 모달 내용을 업데이트
+        $(".modalinfoval ul").html(response);
+        // // 모달 표시
+        $(".modalbg").css("display", "block");
+        $(".modalcontents").css("display", "grid");
+        var height = $(".modalinfo").children().innerHeight();
+        $(".modalinfo").children().animate({ scrollTop: height }, 0);
+        $(".modalinfo").children().css("overflow", "hidden");
+      },
+    });
   });
 });
 

@@ -13,7 +13,7 @@
     href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.css"
   />
     <script src="http://code.jquery.com/jquery-latest.min.js"></script>
-    <title>Document</title>
+    <title>CUP</title>
     <script src="./Web.js?var"></script>
 </head>
 <body>
@@ -150,14 +150,6 @@
                             </div>
                             <div class="modalinfoval">
                                 <ul>
-                                    <li>Number</li>
-                                    <li>Name</li>
-                                    <li>Album</li>
-                                    <li>Artist</li>
-                                    <li>Type</li>
-                                    <li>Genre</li>
-                                    <li>Score</li>
-                                    <li>Difficulty</li>
                                 </ul>
                             </div>
                         </div>
@@ -403,7 +395,7 @@
 
                     // SQL 쿼리를 준비합니다.
                     $sQuery = "SELECT
-                                s.Song_ID AS '#',
+                                s.Song_ID AS 'ID',
                                 s.Title,
                                 GROUP_CONCAT(DISTINCT a.Name ORDER BY a.Name SEPARATOR ', ') AS 'Artist',
                                 s.type AS 'Type',
@@ -474,15 +466,15 @@
                             $lowestPitchString = pitchNumberToString($row['Lowest']);
                             $highestPitchString = pitchNumberToString($row['Highest']);
                             echo "<tr>
-                                    <td>" . htmlspecialchars($row['#']) . "</td>
+                                    <td>" . htmlspecialchars($row['ID']) . "</td>
                                     <td>" . htmlspecialchars($row['Title']) . "</td>
                                     <td>" . htmlspecialchars($row['Artist']) . "</td>
                                     <td>" . htmlspecialchars($row['Type']) . "</td>
                                     <td>" . htmlspecialchars($row['Genre']) . "</td>
                                     <td>" . htmlspecialchars($lowestPitchString) . "</td>
                                     <td>" . htmlspecialchars($highestPitchString) . "</td>
-                                    <td>" . ratingStars(isset($row['AvgScore']) ? $row['AvgScore'] : 0, 5) . "</td>
-                                    <td>" . ratingCircles(isset($row['AvgDifficulty']) ? $row['AvgDifficulty'] : 0, 5) . "</td>
+                                    <td class='AvgS'>" . ratingStars(isset($row['AvgScore']) ? $row['AvgScore'] : 0, 5) . "</td>
+                                    <td class='AvgD'>" . ratingCircles(isset($row['AvgDifficulty']) ? $row['AvgDifficulty'] : 0, 5) . "</td>
                                 </tr>";
                         }
                         echo "</tbody></table>";
