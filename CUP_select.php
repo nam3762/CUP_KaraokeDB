@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="./Web.css" type="text/css">
+    <link rel="stylesheet" href="./Web.css?var" type="text/css">
     <link
     rel="stylesheet"
     href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.8.2/css/all.min.css"
@@ -14,7 +14,7 @@
   />
     <script src="http://code.jquery.com/jquery-latest.min.js"></script>
     <title>Document</title>
-    <script src="./Web.js"></script>
+    <script src="./Web.js?var"></script>
 </head>
 <body>
     <?php
@@ -129,6 +129,39 @@
             <div class="chart">
                 <div></div>
                 <div class="chart_content">
+                    <span class='top'>TOP</span>
+                    <div class="modalbg"></div>
+                    <div class="modalcontents">
+                        <div class="modalalbum">
+                            <img src="90.jpg" alt="앨범사진">
+                        </div>
+                        <div class="modalinfo">
+                            <div class="modalinfohead">
+                                <ul>
+                                    <li>Number</li>
+                                    <li>Name</li>
+                                    <li>Album</li>
+                                    <li>Artist</li>
+                                    <li>Type</li>
+                                    <li>Genre</li>
+                                    <li>Score</li>
+                                    <li>Difficulty</li>
+                                </ul>
+                            </div>
+                            <div class="modalinfoval">
+                                <ul>
+                                    <li>Number</li>
+                                    <li>Name</li>
+                                    <li>Album</li>
+                                    <li>Artist</li>
+                                    <li>Type</li>
+                                    <li>Genre</li>
+                                    <li>Score</li>
+                                    <li>Difficulty</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
                     <!-- PHP 코드를 여기에 삽입 -->
                 <?php
                     include_once 'CUP_dbconfig.php'; // DB 설정 파일
@@ -250,12 +283,15 @@
                     // 결과를 표로 출력합니다.
                     if ($chartResult->num_rows > 0) {
                         echo "<table class='charttable'>";
-                        echo "<tr>
+                        echo "
+                        <thead>
+                            <tr>
                                 <th><a href='CUP_select.php?company=$selectedCompany&year=$selectedYear&sortChart=c.Ranking&order=$newOrder'>Ranking</a></th>
                                 <th><a href='CUP_select.php?company=$selectedCompany&year=$selectedYear&sortChart=s.Title&order=$newOrder'>Title</a></th>
                                 <th><a href='CUP_select.php?company=$selectedCompany&year=$selectedYear&sortChart=ar.Name&order=$newOrder'>Artist</a></th>
                                 <th>Year</th>
-                            </tr>";
+                            </tr>
+                        </thead>";
                         while ($row = $chartResult->fetch_assoc()) {
                             echo "<tr>
                                     <td>" . htmlspecialchars($row['Ranking']) . "</td>
@@ -417,7 +453,9 @@
                     // 입력받은거 출력
                     if ($sResult->num_rows > 0) {
                         echo "<table class='charttable'>";
-                        echo "<tr>
+                        echo "
+                        <thead>
+                            <tr>
                                 <th><a href='CUP_select.php?" . $baseQueryString . "&sort=s.Song_ID&order2=" . $newOrder2 . "'>#</a></th>
                                 <th><a href='CUP_select.php?" . $baseQueryString . "&sort=s.Title&order2=" . $newOrder2 . "'>Title</a></th>
                                 <th><a href='CUP_select.php?" . $baseQueryString . "&sort=Artist&order2=" . $newOrder2 . "'>Artist</a></th>
@@ -427,7 +465,8 @@
                                 <th><a href='CUP_select.php?" . $baseQueryString . "&sort=s.Highest&order2=" . $newOrder2 . "'>Highest</a></th>
                                 <th><a href='CUP_select.php?" . $baseQueryString . "&sort=AvgScore&order2=" . $newOrder2 . "'>Score</a></th>
                                 <th><a href='CUP_select.php?" . $baseQueryString . "&sort=AvgDifficulty&order2=" . $newOrder2 . "'>Difficulty</a></th>
-                            </tr>";
+                            </tr>
+                        </thead><tbody>";
                             
                         while ($row = $sResult->fetch_assoc()) {
                             $score = isset($row['Score']) && is_numeric($row['Score']) ? $row['Score'] : 0;
@@ -446,9 +485,13 @@
                                     <td>" . ratingCircles(isset($row['AvgDifficulty']) ? $row['AvgDifficulty'] : 0, 5) . "</td>
                                 </tr>";
                         }
-                        echo "</table>";
+                        echo "</tbody></table>";
                     } else {
-                        echo "No result found";
+                        echo "
+                            <div style='position: relative; top: 40%; overflow: hidden'>
+                                <p style='font-size: 300%'>No results has found.</p>
+                            </div>
+                        ";
                     }
                     $conn->close();
                 }

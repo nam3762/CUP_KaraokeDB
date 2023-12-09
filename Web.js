@@ -21,6 +21,27 @@ $(document).ready(function () {
   $(".searchoff").click(function () {
     hideSearchBox();
   });
+
+  $(".chart_content").scroll(function(){
+    console.log(5);
+  });
+
+  $(".top").click(function(){
+    $(".chart_content").animate({scrollTop: 0}, 500);
+  });
+
+  $(".modalbg").click(function(){
+    $(this).css("display","none");
+    $(".modalcontents").css("display","none");
+  })
+
+  $(".charttable").children('tbody').children('tr').click(function(){
+    $('.modalbg').css("display","block");
+    $('.modalcontents').css("display","grid");
+    var height = $('.modalinfo').children().innerHeight();
+    $('.modalinfo').children().animate({scrollTop: height},0);
+    $('.modalinfo').children().css("overflow","hidden");
+  });
 });
 
 function showSearchBox() {

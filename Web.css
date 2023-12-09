@@ -12,6 +12,11 @@ body {
     overflow: hidden;
 }
 
+thead{
+    width: 0;
+    height: 0;
+}
+
 body::-webkit-scrollbar {
     display: none;
     -ms-overflow-style: none;
@@ -20,15 +25,17 @@ body::-webkit-scrollbar {
     /* 파이어폭스 */
 }
 
+.chart_content::-webkit-scrollbar {
+    width: 10px;
+    background-color: #F5F5F5;
+}
+
 .chart_content::-webkit-scrollbar-track {
     border: 1px solid lightgray;
     background-color: #F5F5F5;
 }
 
-.chart_content::-webkit-scrollbar {
-    width: 10px;
-    background-color: #F5F5F5;
-}
+
 
 .chart_content::-webkit-scrollbar-thumb {
     background-color: #ffc0cb;
@@ -91,8 +98,6 @@ table {
     border-spacing: 12px;
 }
 
-table * {}
-
 .blank {
     width: 100vw;
     height: 100vh;
@@ -107,7 +112,7 @@ table * {}
 
 .headera {
     overflow: hidden;
-    background-color: #ffc0cb;
+    background: linear-gradient(to right,#ffc0cb,white);
     display: flex;
     align-items: center;
     font-family: 'melona';
@@ -131,7 +136,7 @@ table * {}
 }
 
 .navbar {
-    background-color: whitesmoke;
+    background-color: #F5F5F5;
     overflow: hidden;
 }
 
@@ -302,29 +307,24 @@ select {
 .chart_content {
     font-family: 'melona';
     background-color: white;
-    max-height: 500px;
+    max-height: 90vh;
     /* Adjust this value as needed */
     overflow-y: auto;
     /* This will only show the scrollbar if the content overflows */
 }
 
 .charttable {
+    position: relative;
     width: 100%;
-    height: 100px;
     border: 0;
     border-collapse: collapse;
 
     table-layout: fixed;
     word-break: break-all;
+
 }
 
-.charttable td,
-.charttable th {
-    padding: 10px 0;
-    border-bottom: 1px solid black;
-}
-
-.charttable thead tr {
+.charttable thead tr{
     background-color: #ffc0cb;
 }
 
@@ -334,6 +334,18 @@ select {
 
 .charttable tbody tr:nth-child(2n-1) {
     background-color: white;
+}
+
+.charttable tbody tr:hover {
+    background-color: #ffc0cb;
+}
+
+.charttable thead tr th{
+    padding: 12px;
+}
+
+.charttable tbody tr td{
+    padding: 6px;
 }
 
 .num {
@@ -377,6 +389,101 @@ select {
     src: url('fonts/BinggraeMelona-Bold.ttf') format('truetype');
 }
 
-.noresult{
-        
+.top{
+    position: fixed;
+    bottom: 5%;
+    right: 5%;
+    z-index: 2;
+
+    cursor: pointer;
+
+    color: white;
+    background-color: black;
+    border-radius: 8px;
+    padding: 4px 8px;
+}
+
+.modalbg{
+    display: none;
+    position: absolute;
+    top: 0%;
+    left: 0%;
+
+    width: 100vw;
+    height: 100vh;
+    background-color: rgba(0,0,0,0.4);
+
+    z-index: 3;
+}
+
+.modalcontents{
+    display: none;
+    position: absolute;
+    grid-template-columns: 6fr 4fr;
+    width: 1000px;
+    height: 600px;
+
+    top: 50vh;
+    left: 50vw;
+    
+    background-color: white;
+    border-radius: 24px;
+
+    transform: translate(-500px, -300px );
+
+    z-index: 4;
+}
+
+.modalalbum{
+    overflow: hidden;
+}
+
+.modalalbum img{
+    height: 100%;
+}
+
+.modalinfo{
+    display: grid;
+    grid-template-columns: 1fr 2fr;
+    width: 100%;
+    height: 100%;
+
+}
+
+.modalinfo * ul{
+    position: relative;
+    width: 100%;
+    top: 50%;
+    transform: translate(0,-25%);
+    list-style-position: inside;
+}
+
+.modalinfo * ul li{
+    line-height: 360%;
+    font-size: large;
+}
+
+.modalinfohead{
+    display: flex;
+    background-color: navy;
+    text-align: center;
+}
+
+.modalinfohead ul li{
+    color: white;
+}
+
+.modalinfoval{
+    display: flex;
+    position: relative;
+    background-color: #F5F5F5;
+    text-align: center;
+}   
+
+.modalinfo table td:nth-child(2n){
+    background-color: white;
+}
+
+.modalinfo table td:nth-child(2n-1){
+    background-color: #F5F5F5;
 }
