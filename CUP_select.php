@@ -3,18 +3,13 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="./Web.css?var5" type="text/css">
-    <link
-    rel="stylesheet"
-    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.8.2/css/all.min.css"
-    />
-    <link
-    rel="stylesheet"
-    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.css"
-  />
+    <link rel="stylesheet" href="./Web.css?var6" type="text/css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.css" integrity="sha512-5A8nwdMOWrSz20fDsjczgUidUBR8liPYU+WymTZP1lmY9G6Oc7HlZv156XqnsgNUzTyMefFTcsFH/tnJE/+xBg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.9.0/css/all.min.css" integrity="sha512-q3eWabyZPc1XTCmF+8/LuE1ozpg5xxn7iO89yfSOd5/oKvyqLngoNGsx8jq92Y8eXJ/IRxQbEC+FGSYxtk2oiw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.0/css/all.min.css" integrity="sha512-10/jx2EXwxxWqCLX/hHth/vu2KY3jCF70dCQB8TSgNjbCVAC/8vai53GfMDrO2Emgwccf2pJqxct9ehpzG+MTw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     <script src="http://code.jquery.com/jquery-latest.min.js"></script>
     <title>CUP</title>
-    <script src="./Web.js?var5"></script>
+    <script src="./Web.js?var6"></script>
 </head>
 <body>
     <?php
@@ -61,7 +56,8 @@
                 <div></div>
             </div>
             <div class="navbar" id="searchbox">
-                <i class="searchoff fas fa-search fa-2x"></i>
+                <i class="searchoff fas fa-solid fa-xmark fa-2x"></i>
+                <div class='artistrank'><p>Artist Ranking</p></div>
                 <form class="searchform" action="CUP_select.php" method="get">
                     <label for="song">Song</label>
                     <input type="text" name="song" value="<?php echo htmlspecialchars($_GET['song'] ?? '')?>">
@@ -130,6 +126,14 @@
                 <div></div>
                 <div class="chart_content">
                     <span class='top'>TOP</span>
+                    <div class='fixedbtn' id='logout'>Logout</div>
+                    <i class='fa-solid fa-plus' id='admin'></i>
+                    
+                    <div class='fixedhover'>
+                        <div class='fixedhoverbtn' id='userlist'>User List</div>
+                        <div class='fixedhoverbtn' id='ratinglist'>Rating List</div>
+                    </div>
+
                     <div class="modalbg"></div>
                     <div class="modalcontents">
                         <div class="modalalbum"></div>

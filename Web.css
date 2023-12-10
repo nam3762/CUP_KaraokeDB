@@ -112,7 +112,7 @@ table {
 
 .headera {
     overflow: hidden;
-    background: linear-gradient(to right,#ffc0cb,white);
+    background-color: #ffc0cb;
     display: flex;
     align-items: center;
     font-family: 'melona';
@@ -193,6 +193,10 @@ table {
     font-family: 'melona';
 }
 
+.searchbtn:hover{
+    background-color: #363948;
+}
+
 i {
     position: absolute;
 
@@ -205,6 +209,24 @@ i {
 i:hover {
     background-color: #ffc0cb;
     cursor: pointer;
+}
+
+.artistrank{
+    position: absolute;
+    margin: 20px;
+    margin-left: 280px;
+    padding: 0px 12px;
+    font-family: 'melona';
+
+    color: white;
+    cursor: pointer;
+    background-color: black;
+    border-radius: 12px;
+}
+
+.artistrank:hover{
+    background-color: #363948;
+
 }
 
 .karaoke_label {
@@ -495,4 +517,53 @@ select {
 
 .AvgD {
     color: #FF4061;
+}
+
+.fixedbtn{
+    display: inline;
+    position: fixed;
+    cursor: pointer;
+}
+
+.fixedhover{
+    display: none;
+    position: fixed;
+    padding: 12px;
+    background-color: whitesmoke;
+}
+
+.fixedhoverbtn:hover{
+    background-color:#ffc0cb;
+}
+
+.fixedhoverbtn{
+    padding: 4px;
+}
+
+#userlist{
+}
+
+#logout{
+    right: 16px;
+    font-size:x-large;
+    color: black;
+    background-color: white;
+    padding: 4px 8px;
+    border-radius: 12px;
+
+    top: 16px;
+}
+
+#logout:hover{
+    color: white;
+    background-color: black;
+}
+
+#admin{
+    right: 100px;
+    top: 4px;
+}
+
+#admin:hover{
+    background-color: white;
 }

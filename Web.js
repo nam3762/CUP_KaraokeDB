@@ -27,7 +27,7 @@ $(document).ready(function () {
   });
 
   $(".top").click(function () {
-    $(".chart_content").animate({ scrollTop: 0 }, 500);
+    $(".chart_content").animate({ scrollTop: 0 }, 200);
   });
 
   $(".modalbg").click(function () {
@@ -35,6 +35,17 @@ $(document).ready(function () {
     $(".modalcontents").css("display", "none");
 
     $(".modalalbum").children('img').attr('src','');
+  });
+
+  $('#admin').click(function(){
+    $('.fixedhover').toggle();
+
+    var tadmin = $('#admin').outerHeight();
+    var tpos = $('#admin').position().top;
+    var lpos = $('#admin').position().left;
+
+    $('.fixedhover').css("left",lpos);
+    $('.fixedhover').css("top",tpos+tadmin);
   });
 
   // $(".charttable")
