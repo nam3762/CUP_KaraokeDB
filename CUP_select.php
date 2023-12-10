@@ -133,7 +133,6 @@
                     <div class="modalbg"></div>
                     <div class="modalcontents">
                         <div class="modalalbum">
-                            <img src="90.jpg" alt="앨범사진">
                         </div>
                         <div class="modalinfo">
                             <div class="modalinfohead">

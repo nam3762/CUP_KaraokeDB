@@ -47,23 +47,45 @@ $(document).ready(function () {
   //   });
 
   $(".charttable tbody tr").click(function () {
+    $(".modalbg").css("display", "block");
+    $(".modalcontents").css("display", "grid");
+    console.log("Row clicked");
+
     var songId = $(this).find("td:first-child").text(); // Song_ID 추출
+    console.log("songId:", songId);
     $.ajax({
-      url: "Info.php", // PHP 스크립트
+      url: "getImagePath.php",
       type: "GET",
-      dataType: "html",
       data: { songId: songId },
-      success: function (response) {
-        // PHP 스크립트에서 반환된 데이터로 모달 내용을 업데이트
-        $(".modalinfoval ul").html(response);
-        // // 모달 표시
-        $(".modalbg").css("display", "block");
-        $(".modalcontents").css("display", "grid");
-        var height = $(".modalinfo").children().innerHeight();
-        $(".modalinfo").children().animate({ scrollTop: height }, 0);
-        $(".modalinfo").children().css("overflow", "hidden");
+      success: function (imgSrc) {
+        // 콘솔에 imgSrc 값 로그
+        console.log(imgSrc);
+
+        // 콘솔에 새로 생성된 img 태그 로그
+        console.log($("<img>").attr("src", imgSrc).attr("alt", "Album Image"));
+
+        if ($(".modalalbum img").length === 0) {
+          $(".modalalbum").append($("<img>").attr("alt", "Album Image"));
+        }
+        $(".modalalbum img").attr("src", imgSrc);
       },
     });
+
+    // 나머지 정보를 가져오는 AJAX 요청 (예: Info.php)
+    $.ajax({
+      url: "Info.php", // 나머지 정보를 제공하는 PHP 스크립트
+      type: "GET",
+      data: { songId: songId },
+      success: function (infoResponse) {
+        $(".modalinfoval ul").html(infoResponse);
+        // 모달 표시
+      },
+    });
+
+    $(".modalinfohead").animate({ scrollTop: height }, 0);
+    $(".modalinfoval").animate({ scrollTop: height }, 0);
+    $(".modalinfoval").css("overflow", "hidden");
+    $(".modalinfohead").css("overflow", "hidden");
   });
 });
 

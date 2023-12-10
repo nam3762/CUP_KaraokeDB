@@ -65,7 +65,7 @@
                     $result = $conn->query($Viewquery);
 
                     if ($result->num_rows > 0) {
-                        $row = $result->fetch_assoc();
+                        $row = $result->fetch_assoc(); // 결과 행 가져오기
 
                         echo "<li>" . htmlspecialchars($row['ID']) . "</li>
                             <li>" . htmlspecialchars($row['Title']) . "</li>
