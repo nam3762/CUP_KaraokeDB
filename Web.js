@@ -33,6 +33,8 @@ $(document).ready(function () {
   $(".modalbg").click(function () {
     $(this).css("display", "none");
     $(".modalcontents").css("display", "none");
+
+    $(".modalalbum").children('img').attr('src','');
   });
 
   // $(".charttable")
@@ -82,10 +84,8 @@ $(document).ready(function () {
       },
     });
 
-    $(".modalinfohead").animate({ scrollTop: height }, 0);
-    $(".modalinfoval").animate({ scrollTop: height }, 0);
-    $(".modalinfoval").css("overflow", "hidden");
-    $(".modalinfohead").css("overflow", "hidden");
+    
+
   });
 });
 

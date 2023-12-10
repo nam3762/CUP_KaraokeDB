@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="./Web.css?var" type="text/css">
+    <link rel="stylesheet" href="./Web.css?var5" type="text/css">
     <link
     rel="stylesheet"
     href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.8.2/css/all.min.css"
@@ -14,7 +14,7 @@
   />
     <script src="http://code.jquery.com/jquery-latest.min.js"></script>
     <title>CUP</title>
-    <script src="./Web.js?var"></script>
+    <script src="./Web.js?var5"></script>
 </head>
 <body>
     <?php
@@ -132,8 +132,7 @@
                     <span class='top'>TOP</span>
                     <div class="modalbg"></div>
                     <div class="modalcontents">
-                        <div class="modalalbum">
-                        </div>
+                        <div class="modalalbum"></div>
                         <div class="modalinfo">
                             <div class="modalinfohead">
                                 <ul>
@@ -149,6 +148,7 @@
                             </div>
                             <div class="modalinfoval">
                                 <ul>
+
                                 </ul>
                             </div>
                         </div>

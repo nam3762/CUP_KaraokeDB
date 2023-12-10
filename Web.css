@@ -452,13 +452,14 @@ select {
 .modalinfo * ul{
     position: relative;
     width: 100%;
-    top: 50%;
-    transform: translate(0,-25%);
+    margin: 0;
+
+    padding-top: 84px;
     list-style-position: inside;
 }
 
 .modalinfo * ul li{
-    line-height: 360%;
+    line-height: 300%;
     font-size: large;
 }
 
